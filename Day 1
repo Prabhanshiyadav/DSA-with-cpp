@@ -1,0 +1,31 @@
+//Simple Calculator//
+
+#include<iostream>
+using namespace std;
+int main(){
+	char op;
+	float num1, num2;
+	cout<<"Num1: ";
+	cin>>num1;
+		cout<<"Num2: ";
+	cin>>num2;
+		cout<<"op: ";
+		cin>>op;
+	switch(op){
+		case'+':
+			cout<<num1+num2;
+			break;
+		case'-':
+			cout<<num1-num2;
+			break;
+		case'*':
+			cout<<num1*num2;
+			break;
+		case'/':
+			cout<<num1/num2;
+			break;
+		default:
+			cout<<"Error";
+	}
+			return 0;			
+}
