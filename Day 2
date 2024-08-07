@@ -1,0 +1,41 @@
+//Check vowel or consonant - Take char as user input//
+
+#include<iostream>
+using namespace std;
+int main(){
+	char vowel;
+	cout<<"Enter Alphabet: "<<vowel;
+	cin>>vowel;
+	    vowel = tolower(vowel);
+	if(vowel == 'a'|| vowel=='e'|| vowel=='i'|| vowel == 'o'|| vowel =='u'){
+		cout<<"Vowel";
+	}
+	else{
+		cout<<"Consonant";
+	}
+	return 0;
+}
+
+
+//Find larget number among three numbers//
+
+#include<iostream>
+using namespace std;
+int main() {
+    int a, b, c;
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    cout << "Enter c: ";
+    cin >> c;  
+    if (a >= b && a >= c) {
+        cout << "Max num: " << a << endl;
+    } else if (b >= a && b >= c) {
+        cout << "Max num: " << b << endl;
+    } else {
+        cout << "Max num: " << c << endl;
+    }
+    
+    return 0;
+}
