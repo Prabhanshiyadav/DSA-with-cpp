@@ -17,6 +17,8 @@ int main(){
 }
 
 
+
+
 //Find larget number among three numbers//
 
 #include<iostream>
@@ -39,3 +41,43 @@ int main() {
     
     return 0;
 }
+
+
+
+
+
+//Create a function that will return the sum of three numbers//
+#include<iostream>
+using namespace std;
+int sum(int a, int b, int c){
+return a+b+c;
+}
+int main(){
+	int num1 , num2 ,num3;
+	cout<<"Enter three num: ";
+	cin>>num1>>num2>>num3;
+	int result = sum(num1, num2, num3);
+	cout<<"The sum of three num: "<<result<<endl;
+}
+
+
+
+
+//Create a function which will return square of a number//
+
+#include<iostream>
+using namespace std;
+int square(int a){
+return a*a;
+}
+int main(){
+	int num;
+	cout<<"Enter num: ";
+	cin>>num;
+	int result = square(num);
+	cout<<"Square: "<<result<<endl;
+}
+
+
+
+
