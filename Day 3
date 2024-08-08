@@ -1,0 +1,29 @@
+/*Write C++ program that demonstrates the use of pointers with simple variables. 
+The program should:
+Declare three integer variables a,b and c. 
+Declare three pointer p1,p2 and p3.
+Assign the address of a to p1, the address of b to p2 and the address of c to p3.
+Use the pointers to assign the value to a,b and c. 
+Calculate the sum of a,b and c using the pointer and store the result in a variable sum.
+Print the values of a,b,c and sum*/
+
+
+CODE:-
+
+#include<iostream>
+using namespace std;
+int main(){
+	int a, b, c;
+	int *p1, *p2, *p3;
+	p1 = &a;
+	p2 = &b;
+	p3 = &c;
+	*p1 = 15;
+	*p2 = 20;
+	*p3 = 30;
+	int sum = *p1 + *p2 + *p3;
+	cout<<"Value of a: "<<a<<endl;
+	cout<<"Value of b: "<<b<<endl;
+	cout<<"Value of c: "<<c<<endl;
+	
+}
