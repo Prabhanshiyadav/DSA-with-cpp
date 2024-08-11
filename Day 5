@@ -1,0 +1,176 @@
+/*  Write a C++ program that incorporates the concept you’ve learned in recent classes. You may take inspiration from the C++ Bank Management System project covered on Project Day.
+
+Note: Specify any new classes, methods, or features you implement. Use comments to explain the purpose and functionality of your additions. */
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+class Account {
+public:
+    Account(int accountNumber, const std::string& accountHolder, double balance)
+        : accountNumber(accountNumber), accountHolder(accountHolder), balance(balance) {}
+
+    int getAccountNumber() const {
+        return accountNumber;
+    }
+
+    std::string getAccountHolder() const {
+        return accountHolder;
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        std::cout << "Deposited " << amount << ". New balance: " << balance << std::endl;
+    }
+
+    void withdraw(double amount) {
+        if (amount > balance) {
+            std::cout << "Insufficient balance!" << std::endl;
+        } else {
+            balance -= amount;
+            std::cout << "Withdrew " << amount << ". New balance: " << balance << std::endl;
+        }
+    }
+
+    void displayAccountDetails() const {
+        std::cout << "Account Number: " << accountNumber << "\nAccount Holder: " << accountHolder
+                  << "\nBalance: " << balance << std::endl;
+    }
+
+private:
+    int accountNumber;
+    std::string accountHolder;
+    double balance;
+};
+
+class Bank {
+public:
+    void createAccount() {
+        int accountNumber;
+        std::string accountHolder;
+        double initialDeposit;
+
+        std::cout << "Enter Account Number: ";
+        std::cin >> accountNumber;
+        std::cin.ignore();  // To clear the newline character from the buffer
+        std::cout << "Enter Account Holder Name: ";
+        std::getline(std::cin, accountHolder);
+        std::cout << "Enter Initial Deposit: ";
+        std::cin >> initialDeposit;
+
+        accounts.push_back(Account(accountNumber, accountHolder, initialDeposit));
+        std::cout << "Account created successfully.\n";
+    }
+
+    void deposit() {
+        int accountNumber;
+        double amount;
+        std::cout << "Enter Account Number: ";
+        std::cin >> accountNumber;
+        std::cout << "Enter Amount to Deposit: ";
+        std::cin >> amount;
+
+        for (auto& acc : accounts) {
+            if (acc.getAccountNumber() == accountNumber) {
+                acc.deposit(amount);
+                return;
+            }
+        }
+        std::cout << "Account not found.\n";
+    }
+
+    void withdraw() {
+        int accountNumber;
+        double amount;
+        std::cout << "Enter Account Number: ";
+        std::cin >> accountNumber;
+        std::cout << "Enter Amount to Withdraw: ";
+        std::cin >> amount;
+
+        for (auto& acc : accounts) {
+            if (acc.getAccountNumber() == accountNumber) {
+                acc.withdraw(amount);
+                return;
+            }
+        }
+        std::cout << "Account not found.\n";
+    }
+
+    void viewAccountDetails() const {
+        int accountNumber;
+        std::cout << "Enter Account Number: ";
+        std::cin >> accountNumber;
+
+        for (const auto& acc : accounts) {
+            if (acc.getAccountNumber() == accountNumber) {
+                acc.displayAccountDetails();
+                return;
+            }
+        }
+        std::cout << "Account not found.\n";
+    }
+
+    void generateReport() const {
+        for (const auto& acc : accounts) {
+            acc.displayAccountDetails();
+            std::cout << "-------------------------\n";
+        }
+    }
+
+private:
+    std::vector<Account> accounts;
+};
+
+class UserInterface {
+public:
+    void displayMenu() {
+        std::cout << "1. Create Account\n2. Deposit\n3. Withdraw\n4. View Account Details\n5. Generate Report\n6. Exit\n";
+    }
+
+    int getInput() {
+        int choice;
+        std::cin >> choice;
+        return choice;
+    }
+};
+
+int main() {
+    UserInterface ui;
+    Bank bank;
+
+    while (true) {
+        ui.displayMenu();
+        int choice = ui.getInput();
+
+        switch (choice) {
+            case 1:
+                bank.createAccount();
+                break;
+            case 2:
+                bank.deposit();
+                break;
+            case 3:
+                bank.withdraw();
+                break;
+            case 4:
+                bank.viewAccountDetails();
+                break;
+            case 5:
+                bank.generateReport();
+                break;
+            case 6:
+                return 0;
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
+        }
+    }
+
+    return 0;
+}
+
