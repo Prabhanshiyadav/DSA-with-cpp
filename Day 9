@@ -1,0 +1,31 @@
+/* Reverse number */
+
+
+#include<iostream>
+using namespace std;
+
+int getLength(char str[]) {
+	int count = 0;
+	for(int i = 0; str[i] != '\0'; i++) {
+		count++;
+	}
+	return count;
+}
+
+void reverse(char str[], int size) {  
+	int s = 0;
+	int e = size - 1;
+	while(s < e) {  
+		swap(str[s], str[e]);
+		s++;
+		e--;
+	}
+}
+
+int main() {
+	char str[100] = "Hello";
+	int length = getLength(str);  
+	reverse(str, length);
+	cout << str;
+	return 0;
+}
